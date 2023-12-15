@@ -1,25 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  const[color, setColor] = useState({color: getRandomColor()});
+
+  const changeColor = () => {
+    setColor({color: getRandomColor()});
+  }
+
+  function getRandomColor() {
+    let r = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+    let g = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+    let b = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  return(
+    <>
+    <p style={color}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam praesentium doloribus quidem vitae blanditiis iste nemo aut, eum deserunt, deleniti veritatis labore nobis, dicta eveniet omnis veniam earum impedit incidunt!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium numquam ipsum excepturi ullam, eligendi in. Ipsa, debitis? Perspiciatis id iure exercitationem perferendis officiis beatae repudiandae atque, expedita numquam itaque labore.</p>
+    <button onClick={changeColor}>Зміна кольору</button>
+    </>
+  )
 }
 
 export default App;
